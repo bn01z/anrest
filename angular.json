@@ -2,5 +2,274 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "@anrest/api": {
+      "root": "projects/anrest/api",
+      "sourceRoot": "projects/anrest/api/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/anrest/api/tsconfig.lib.json",
+            "project": "projects/anrest/api/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anrest/api/src/test.ts",
+            "tsConfig": "projects/anrest/api/tsconfig.spec.json",
+            "karmaConfig": "projects/anrest/api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/anrest/api/tsconfig.lib.json",
+              "projects/anrest/api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@anrest/cache": {
+      "root": "projects/anrest/cache",
+      "sourceRoot": "projects/anrest/cache/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/anrest/cache/tsconfig.lib.json",
+            "project": "projects/anrest/cache/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anrest/cache/src/test.ts",
+            "tsConfig": "projects/anrest/cache/tsconfig.spec.json",
+            "karmaConfig": "projects/anrest/cache/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/anrest/cache/tsconfig.lib.json",
+              "projects/anrest/cache/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@anrest/auth": {
+      "root": "projects/anrest/auth",
+      "sourceRoot": "projects/anrest/auth/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/anrest/auth/tsconfig.lib.json",
+            "project": "projects/anrest/auth/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anrest/auth/src/test.ts",
+            "tsConfig": "projects/anrest/auth/tsconfig.spec.json",
+            "karmaConfig": "projects/anrest/auth/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/anrest/auth/tsconfig.lib.json",
+              "projects/anrest/auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@anrest/loader": {
+      "root": "projects/anrest/loader",
+      "sourceRoot": "projects/anrest/loader/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/anrest/loader/tsconfig.lib.json",
+            "project": "projects/anrest/loader/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anrest/loader/src/test.ts",
+            "tsConfig": "projects/anrest/loader/tsconfig.spec.json",
+            "karmaConfig": "projects/anrest/loader/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/anrest/loader/tsconfig.lib.json",
+              "projects/anrest/loader/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "anrest-example": {
+      "root": "projects/anrest-example/",
+      "sourceRoot": "projects/anrest-example/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/anrest-example",
+            "index": "projects/anrest-example/src/index.html",
+            "main": "projects/anrest-example/src/main.ts",
+            "polyfills": "projects/anrest-example/src/polyfills.ts",
+            "tsConfig": "projects/anrest-example/tsconfig.app.json",
+            "assets": [
+              "projects/anrest-example/src/favicon.ico",
+              "projects/anrest-example/src/assets"
+            ],
+            "styles": [
+              "projects/anrest-example/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/anrest-example/src/environments/environment.ts",
+                  "with": "projects/anrest-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "anrest-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "anrest-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "anrest-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anrest-example/src/test.ts",
+            "polyfills": "projects/anrest-example/src/polyfills.ts",
+            "tsConfig": "projects/anrest-example/tsconfig.spec.json",
+            "karmaConfig": "projects/anrest-example/karma.conf.js",
+            "styles": [
+              "projects/anrest-example/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/anrest-example/src/favicon.ico",
+              "projects/anrest-example/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/anrest-example/tsconfig.app.json",
+              "projects/anrest-example/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "anrest-example-e2e": {
+      "root": "projects/anrest-example-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/anrest-example-e2e/protractor.conf.js",
+            "devServerTarget": "anrest-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "anrest-example:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/anrest-example-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "@anrest/api"
 }

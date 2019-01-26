@@ -1,0 +1,16 @@
+{
+  "name": "@anrest/cache",
+  "version": "0.0.1",
+  "description": "AnRest Caching extension.",
+  "keywords" :["angular","library", "rest", "api", "caching"],
+  "license" : "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/bn01z/anrest-cache"
+  },
+  "homepage" :"https://github.com/bn01z/anrest-cache#readme",
+  "main": "src/public_api.ts",
+  "peerDependencies": {
+    "@anrest/api": "~0.0.1"
+  }
+}

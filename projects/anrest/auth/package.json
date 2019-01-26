@@ -1,0 +1,25 @@
+{
+  "name": "@anrest/auth",
+  "version": "0.0.1",
+  "description": "AnRest Auth extension.",
+  "keywords": [
+    "angular",
+    "library",
+    "rest",
+    "api",
+    "auth"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bn01z/anrest-auth"
+  },
+  "homepage": "https://github.com/bn01z/anrest-auth#readme",
+  "main": "src/public_api.ts",
+  "dependencies": {
+    "ngx-cookie-service": ">=1.0.0"
+  },
+  "peerDependencies": {
+    "@anrest/api": "~0.0.1"
+  }
+}

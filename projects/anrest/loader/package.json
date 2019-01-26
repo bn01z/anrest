@@ -1,0 +1,16 @@
+{
+  "name": "@anrest/loader",
+  "version": "0.0.1",
+  "description": "AnRest extension for easier implementation of API results filtering, pagination and infinite scroll.",
+  "keywords" :["angular","library", "rest", "api", "loader", "filters", "pagination", "infinite scroll"],
+  "license" : "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/bn01z/anrest-loader"
+  },
+  "homepage" :"https://github.com/bn01z/anrest-loader#readme",
+  "main": "src/public_api.ts",
+  "peerDependencies": {
+    "@anrest/api": "~0.0.1"
+  }
+}

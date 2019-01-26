@@ -17,6 +17,32 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@anrest/api": [
+        "dist/anrest/api"
+      ],
+      "@anrest/api/*": [
+        "dist/anrest/api/*"
+      ],
+      "@anrest/cache": [
+        "dist/anrest/cache"
+      ],
+      "@anrest/cache/*": [
+        "dist/anrest/cache/*"
+      ],
+      "@anrest/auth": [
+        "dist/anrest/auth"
+      ],
+      "@anrest/auth/*": [
+        "dist/anrest/auth/*"
+      ],
+      "@anrest/loader": [
+        "dist/anrest/loader"
+      ],
+      "@anrest/loader/*": [
+        "dist/anrest/loader/*"
+      ]
+    }
   }
 }
