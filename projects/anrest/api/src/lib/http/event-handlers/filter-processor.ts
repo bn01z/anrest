@@ -8,16 +8,28 @@ import { BeforeGetList } from '../../decorator/event-handler';
 export class FilterProcessor implements EventHandler {
   handle(event: BeforeGetListEvent) {
     if (event.params === undefined) {
-      event.params = new HttpParams();
-      for (const key in event.filters) {
-        if (event.filters[key] || event.filters[key] === false) {
-          event.params = event.params.set(
-            key,
-            typeof event.filters[key] === 'boolean' ? (event.filters[key] ? 'true' : 'false') : String(event.filters[key])
-          );
-        }
+      event.params = this.processFilters(new HttpParams(), event.filters);
+    }
+  }
+
+  private processFilters(params: HttpParams, filter: any, prefix = ''): HttpParams {
+    if (Array.isArray(filter)) {
+      prefix = prefix + '[]';
+      for (const value of filter) {
+        params = this.processFilters(params, value, prefix);
+      }
+    } else if (typeof filter === 'object') {
+      for (const key in filter) {
+        const newPrefix = prefix ? (prefix + '[' + key + ']') : key;
+        params = this.processFilters(params, filter[key], newPrefix);
+      }
+    } else {
+      if (filter || filter === false) {
+        params = params.append(prefix, typeof filter === 'boolean' ? (filter ? 'true' : 'false') : String(filter));
       }
     }
+
+    return params;
   }
 
   priority(): number {
