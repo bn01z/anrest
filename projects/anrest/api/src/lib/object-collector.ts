@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Meta } from '../meta/meta';
+import { Meta } from './meta/meta';
 
 @Injectable()
 export class ObjectCollector {

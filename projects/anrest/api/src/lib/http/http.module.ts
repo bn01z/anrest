@@ -10,7 +10,6 @@ import { BodyConverter } from './event-handlers/body-converter';
 import { ResponseProcessor } from './event-handlers/response-processor';
 import { ResponseNormalizer } from './event-handlers/response-normalizer';
 import { AnRestHttpClient } from './client';
-import { ObjectCollector } from './object-collector';
 import { TransformerModule } from '../transformer/transformer.module';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { TransformerModule } from '../transformer/transformer.module';
     TransformerModule
   ],
   providers: [
-    ObjectCollector,
     AnRestHttpClient,
     {
       provide: AnRestHttpHandler,

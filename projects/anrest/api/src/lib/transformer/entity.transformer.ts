@@ -1,7 +1,7 @@
 import { Injectable, Type } from '@angular/core';
 
 import { ObjectTransformer } from './object.transformer';
-import { ObjectCollector } from '../http/object-collector';
+import { ObjectCollector } from '../object-collector';
 import { Meta } from '../meta/meta';
 
 @Injectable()

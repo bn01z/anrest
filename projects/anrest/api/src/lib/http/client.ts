@@ -16,6 +16,7 @@ import {
   BeforeSaveEvent
 } from '../event/event';
 import { EventsService } from '../event/service';
+import {Meta} from "../meta/meta";
 
 @Injectable()
 export class AnRestHttpClient extends HttpClient {
@@ -42,6 +43,10 @@ export class AnRestHttpClient extends HttpClient {
       map((response: HttpResponse<any>) =>
           (<AfterGetItemEvent> this.eventsService.broadcast(new AfterGetItemEvent(this, entityType, response))).data)
     );
+  }
+
+  refreshItem(entity: any): Observable<any> {
+    return this.getItem(entity.constructor, entity[Meta.getForType(entity.constructor).id]);
   }
 
   saveItem(entity: any): Observable<any> {

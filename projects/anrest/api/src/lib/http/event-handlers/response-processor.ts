@@ -2,7 +2,7 @@ import { Type } from '@angular/core';
 
 import { AfterGetItem, AfterGetList, AfterRemove, AfterSave } from '../../decorator/event-handler';
 import { EventHandler } from '../../event/handler';
-import { ObjectCollector } from '../object-collector';
+import { ObjectCollector } from '../../object-collector';
 import { AfterEvent } from '../../event/event';
 import { NormalizedCollectionResponse, NormalizedResponse } from '../../normalizer/normalized-response';
 import { Collection } from '../../collection/collection';

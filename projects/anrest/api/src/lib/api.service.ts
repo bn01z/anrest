@@ -24,4 +24,8 @@ export abstract class ApiService {
   public remove(entity: any): Observable<any> {
     return this.http.removeItem(entity);
   }
+
+  public refresh(entity: any): Observable<any> {
+    return this.http.refreshItem(entity);
+  }
 }

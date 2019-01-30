@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 
 import { ComplexDataTransformer } from './transformer';
-import { ObjectCollector } from '../http/object-collector';
+import { ObjectCollector } from '../object-collector';
 import { Meta } from '../meta/meta';
 
 export abstract class ObjectTransformer extends ComplexDataTransformer {
