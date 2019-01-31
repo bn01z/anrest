@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnRestHttpClient } from '@anrest/api';
-import { Post } from './data/post';
 import { User } from './data/user';
 import {tap} from "rxjs/operators";
+import { SpecificPost } from "./data/specific-post";
 
 @Component({
   selector: 'app-root',
@@ -29,9 +29,10 @@ export class AppComponent implements OnInit {
       something: [ false, 4, 6 ]
     };
     this.http.getList(User, query).subscribe(console.log);
-    this.http.getItem(Post, 1)
+    this.http.getItem(SpecificPost, 1)
       .pipe(
-        tap((post: Post) => this.http.refreshItem(post.user).subscribe())
+        tap((post: SpecificPost) => this.http.refreshItem(post.user).subscribe()),
+        tap((post: SpecificPost) => post.comments().subscribe(console.log))
       )
       .subscribe(console.log);
   }

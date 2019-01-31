@@ -6,7 +6,7 @@ import { StringTransformer } from './string.transformer';
 import { DateTransformer } from './date.transformer';
 import { SimpleObjectTransformer } from './simple-object.transformer';
 import { EntityTransformer } from './entity.transformer';
-import { ReferenceTransformer } from './reference.transformer';
+import { ReferenceFormatterTransformer } from './reference-formatter.transformer';
 
 @NgModule({
   providers: [
@@ -38,7 +38,7 @@ import { ReferenceTransformer } from './reference.transformer';
     },
     {
       provide: ANREST_DATA_TRANSFORMERS,
-      useClass: ReferenceTransformer,
+      useClass: ReferenceFormatterTransformer,
       multi: true
     }
   ]

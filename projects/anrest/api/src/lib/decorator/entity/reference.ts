@@ -7,7 +7,7 @@ export function Reference(): PropertyDecorator {
   return (target: Object, propertyKey: string) => {
     Meta.getForType(<Type<any>>target.constructor).properties.forEach((value => {
       if (value.property === propertyKey) {
-        value.transformers.unshift('reference');
+        value.transformers.unshift('reference-formatter');
       }
     }));
   };
