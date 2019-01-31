@@ -1,28 +1,23 @@
 import { Type } from '@angular/core';
 import 'reflect-metadata';
 import { Meta } from '../../meta/meta';
-import { NumberTransformer } from '../../transformer/number.transformer';
-import { StringTransformer } from '../../transformer/string.transformer';
-import { DateTransformer } from '../../transformer/date.transformer';
-import { SimpleObjectTransformer } from '../../transformer/simple-object.transformer';
-import { EntityTransformer } from '../../transformer/entity.transformer';
 
 function getTransformers(type: Type<any>) {
   switch (type) {
     case Number:
-      return [NumberTransformer];
+      return ['number'];
     case String:
-      return [StringTransformer];
+      return ['string'];
     case Date:
-      return [DateTransformer];
+      return ['date'];
     case Object:
-      return [SimpleObjectTransformer];
+      return ['simple-object'];
     case undefined:
     case null:
     case Array:
       return [];
     default:
-      return [EntityTransformer];
+      return ['entity'];
   }
 }
 

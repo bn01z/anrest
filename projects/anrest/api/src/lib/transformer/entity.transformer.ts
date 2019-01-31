@@ -20,6 +20,10 @@ export class EntityTransformer extends ObjectTransformer {
     return Array.isArray(data) ? data.map((object) => this.processObject(object, meta, type)) : this.processObject(data, meta, type);
   }
 
+  supports(name: string): boolean {
+    return 'entity' === name;
+  }
+
   private processObject(data: any, meta, type: Type<any>) {
     const id = data['@id'] || (data[meta.id] ? [meta.path, data[meta.id]].join('/') : undefined);
     const object = this.getObject(type, id);

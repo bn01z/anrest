@@ -27,4 +27,8 @@ export class SimpleObjectTransformer extends ObjectTransformer {
 
     return object;
   }
+
+  supports(name: string): boolean {
+    return 'simple-object' === name;
+  }
 }

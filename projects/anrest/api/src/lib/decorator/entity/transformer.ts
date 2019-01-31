@@ -1,9 +1,8 @@
 import { Type, TypeDecorator } from '@angular/core';
 
 import { Meta } from '../../meta/meta';
-import { DataTransformer } from '../../transformer/transformer';
 
-export function Transformer(transformer: Type<DataTransformer>): TypeDecorator|PropertyDecorator {
+export function Transformer(transformer: string): TypeDecorator|PropertyDecorator {
 
   return (target: Object|Type<any>, propertyKey?: string) => {
     if (propertyKey) {

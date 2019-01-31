@@ -5,7 +5,7 @@ interface PropertyMetadata {
   property: string;
   type: Type<any>;
   name: string;
-  transformers: Type<DataTransformer>[];
+  transformers: string[];
 }
 
 interface SubresourceMetadata {
@@ -29,7 +29,7 @@ export class TypeMetadata {
   properties: PropertyMetadata[] = [];
   subresources: SubresourceMetadata[] = [];
   headers: HeadersMetadata[] = [];
-  transformers: Type<DataTransformer>[];
+  transformers: string[];
 
   constructor() {
     this.id = 'id';

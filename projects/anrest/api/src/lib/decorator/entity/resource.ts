@@ -1,14 +1,13 @@
 import { Type, TypeDecorator } from '@angular/core';
 import { Meta } from '../../meta/meta';
 import { HttpModule } from '../../http/http.module';
-import { EntityTransformer } from '../../transformer/entity.transformer';
 
-export function Resource(path: string): TypeDecorator {
+export function Resource(path?: string): TypeDecorator {
 
   return (target: Type<any>) => {
     const meta = Meta.getForType(target);
     meta.path = path;
-    meta.transformers = [EntityTransformer];
+    meta.transformers = ['entity'];
 
     meta.subresources.forEach((subresourceInfo) => {
       const subresourcePath = subresourceInfo.path || Meta.getForType(subresourceInfo.type).path;

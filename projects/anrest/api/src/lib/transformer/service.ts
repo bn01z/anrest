@@ -17,14 +17,14 @@ export class TransformerService {
     });
   }
 
-  public transform(data: any, type: Type<any>, transformerTypes?: Type<DataTransformer>[]): any {
+  public transform(data: any, type: Type<any>, transformerTypes?: string[]): any {
     for (const transformerType of (transformerTypes || Meta.getForType(type).transformers)) {
       data = this.findTransformer(transformerType).transform(data, type);
     }
     return data;
   }
 
-  private findTransformer(transformerType: Type<DataTransformer>): DataTransformer {
-    return this.transformers.filter((transformer) => transformer instanceof transformerType)[0];
+  private findTransformer(transformerType: string): DataTransformer {
+    return this.transformers.filter((transformer) => transformer.supports(transformerType))[0];
   }
 }

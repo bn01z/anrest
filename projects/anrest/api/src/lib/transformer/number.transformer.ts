@@ -8,4 +8,8 @@ export class NumberTransformer implements DataTransformer {
 
     return Number(data);
   }
+
+  supports(name: string): boolean {
+    return 'number' === name;
+  }
 }

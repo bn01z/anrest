@@ -8,4 +8,8 @@ export class DateTransformer implements DataTransformer {
 
     return new Date(data);
   }
+
+  supports(name: string): boolean {
+    return 'date' === name;
+  }
 }

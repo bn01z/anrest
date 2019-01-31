@@ -12,4 +12,8 @@ export class ReferenceTransformer implements DataTransformer {
 
     return result;
   }
+
+  supports(name: string): boolean {
+    return 'reference' === name;
+  }
 }

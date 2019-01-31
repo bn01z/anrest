@@ -2,7 +2,6 @@ import { Type } from '@angular/core';
 
 import { TypeMetadata } from './type-metadata';
 import { ObjectMetadata } from './object-metadata';
-import { EventHandler } from '../event/handler';
 import { EventsMetadata } from './event-metadata';
 
 export class Meta {
@@ -16,7 +15,7 @@ export class Meta {
   static getForType(type: Type<any>): TypeMetadata {
     return type.hasOwnProperty(Meta.typeMetaKey) ?
       (type as any)[Meta.typeMetaKey] :
-      Object.defineProperty(type, Meta.typeMetaKey, { value: new TypeMetadata() })[Meta.typeMetaKey];
+      Object.defineProperty(type, Meta.typeMetaKey, { value: Meta.createTypeMeta(type) })[Meta.typeMetaKey];
   }
 
   static getForObject(type: Object): ObjectMetadata {
@@ -29,5 +28,25 @@ export class Meta {
     return type.hasOwnProperty(Meta.eventMetaKey) ?
       (type as any)[Meta.eventMetaKey] :
       Object.defineProperty(type, Meta.eventMetaKey, { value: new EventsMetadata() })[Meta.eventMetaKey];
+  }
+
+  private static createTypeMeta(type: Type<any>) {
+    const meta = new TypeMetadata();
+    const baseMeta: TypeMetadata = Object.getPrototypeOf(type)[Meta.typeMetaKey];
+
+    if (baseMeta) {
+      meta.id = baseMeta.id;
+      meta.path = baseMeta.path;
+      meta.body = baseMeta.body;
+      meta.transformers = baseMeta.transformers;
+      for (const key in baseMeta.properties) {
+        meta.properties[key] = Object.assign({}, baseMeta.properties[key]);
+      }
+      for (const key in baseMeta.headers) {
+        meta.headers[key] = Object.assign({}, baseMeta.headers[key]);
+      }
+    }
+
+    return meta;
   }
 }

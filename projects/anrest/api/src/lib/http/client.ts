@@ -46,7 +46,12 @@ export class AnRestHttpClient extends HttpClient {
   }
 
   refreshItem(entity: any): Observable<any> {
-    return this.getItem(entity.constructor, entity[Meta.getForType(entity.constructor).id]);
+    const meta = Meta.getForType(entity.constructor);
+    if (!meta.path) {
+      return of(entity);
+    }
+
+    return this.getItem(entity.constructor, entity[meta.id]);
   }
 
   saveItem(entity: any): Observable<any> {
