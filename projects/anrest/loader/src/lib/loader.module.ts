@@ -4,7 +4,7 @@ import { AnRestLoaderConfig, ApiLoaderConfig } from './loader.config';
 
 const defaultConfig: ApiLoaderConfig = {
   preload: false,
-  debounceTime: 300,
+  debounceTime: 0,
   replay: 1
 };
 
