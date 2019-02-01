@@ -1,9 +1,10 @@
 import { Type } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { CollectionInfo } from './collection-info';
 import { AnRestHttpClient } from '../http/client';
+import { Meta } from "../meta/meta";
 
 export class Collection<T> extends Array<T> {
 
@@ -25,6 +26,7 @@ export class Collection<T> extends Array<T> {
   constructor(private info: CollectionInfo, private http: AnRestHttpClient, private type: Type<any>, ...items: T[]) {
     super(...items);
     Object.setPrototypeOf(this, Collection.prototype);
+    Meta.getForObject(this).id = this.info.current;
   }
 
   get total(): number {

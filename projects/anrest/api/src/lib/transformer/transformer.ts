@@ -1,4 +1,5 @@
 import { InjectionToken, Type } from '@angular/core';
+import { AnRestHttpClient } from "../http/client";
 
 export interface DataTransformer {
   transform(data: any, type?: Type<any>): any;
@@ -6,22 +7,14 @@ export interface DataTransformer {
 }
 
 export abstract class ComplexDataTransformer implements DataTransformer {
-  private _transformers: DataTransformer[];
+  public transformers: DataTransformer[];
+  public http: AnRestHttpClient;
 
   abstract transform(data: any, type: Type<any>): any;
   abstract supports(name: string): boolean;
 
-
-  get transformers(): DataTransformer[] {
-    return this._transformers;
-  }
-
-  set transformers(value: DataTransformer[]) {
-    this._transformers = value;
-  }
-
   protected findTransformer(transformerType: string): DataTransformer {
-    return this._transformers.filter((transformer) => transformer.supports(transformerType))[0];
+    return this.transformers.filter((transformer) => transformer.supports(transformerType))[0];
   }
 }
 

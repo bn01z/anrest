@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TransformerService } from './service';
+import { TransformerService } from './transformer.service';
 import { ANREST_DATA_TRANSFORMERS } from './transformer';
 import { NumberTransformer } from './number.transformer';
 import { StringTransformer } from './string.transformer';
