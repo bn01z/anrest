@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnRestHttpClient } from '@anrest/api';
 import { User } from './data/user';
-import {tap} from "rxjs/operators";
-import { SpecificPost } from "./data/specific-post";
+import { tap } from 'rxjs/operators';
+import { SpecificPost } from './data/specific-post';
 
 @Component({
   selector: 'app-root',

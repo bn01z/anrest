@@ -2,16 +2,17 @@
   "name": "anrest",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build-api": "ng build @anrest/api",
+    "pack-api": "npm run build-api && cd dist/anrest/api && npm pack",
     "build-cache": "ng build @anrest/cache",
+    "pack-cache": "npm run build-cache && cd dist/anrest/cache && npm pack",
     "build-auth": "ng build @anrest/auth",
+    "pack-auth": "npm run build-auth && cd dist/anrest/auth && npm pack",
     "build-loader": "ng build @anrest/loader",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "pack-loader": "npm run build-loader && cd dist/anrest/loader && npm pack",
+    "pack-all": "npm run pack-api && npm run pack-cache && npm run pack-auth && npm run pack-loader"
   },
   "private": true,
   "dependencies": {
