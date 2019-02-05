@@ -29,11 +29,6 @@ export class AppComponent implements OnInit {
       something: [ false, 4, 6 ]
     };
     this.http.getList(User, query).subscribe(console.log);
-    this.http.getItem(SpecificPost, 1)
-      .pipe(
-        tap((post: SpecificPost) => this.http.refreshItem(post.user).subscribe()),
-        tap((post: SpecificPost) => post.comments().subscribe(console.log))
-      )
-      .subscribe(console.log);
+    this.http.getReference(SpecificPost, 1).comments().subscribe(console.log);
   }
 }

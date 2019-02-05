@@ -17,6 +17,10 @@ export abstract class ApiService {
     return this.http.getItem(this.entityType(), id);
   }
 
+  public getReference(id: number|string): Observable<any> {
+    return this.http.getReference(this.entityType(), id);
+  }
+
   public save(entity: any): Observable<any> {
     return this.http.saveItem(entity);
   }

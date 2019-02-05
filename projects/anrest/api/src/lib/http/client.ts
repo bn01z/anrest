@@ -17,6 +17,7 @@ import {
 } from '../event/event';
 import { EventsService } from '../event/service';
 import {Meta} from "../meta/meta";
+import { NormalizedResponse } from "../normalizer/normalized-response";
 
 @Injectable()
 export class AnRestHttpClient extends HttpClient {
@@ -43,6 +44,15 @@ export class AnRestHttpClient extends HttpClient {
       map((response: HttpResponse<any>) =>
           (<AfterGetItemEvent> this.eventsService.broadcast(new AfterGetItemEvent(this, entityType, response))).data)
     );
+  }
+
+  getReference(entityType: Type<any>, id: number|string): any {
+    const data = {};
+    data[Meta.getForType(entityType).id] = id;
+
+    return (<AfterGetItemEvent> this.eventsService.broadcast(
+      new AfterGetItemEvent(this, entityType, new NormalizedResponse(data)))
+    ).data
   }
 
   refreshItem(entity: any): Observable<any> {
