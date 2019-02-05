@@ -30,5 +30,6 @@ export class AppComponent implements OnInit {
     };
     this.http.getList(User, query).subscribe(console.log);
     this.http.getReference(SpecificPost, 1).comments().subscribe(console.log);
+    this.http.getItem(SpecificPost, 2).subscribe(console.log);
   }
 }
