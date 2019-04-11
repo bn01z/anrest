@@ -2,7 +2,7 @@ import { Type } from '@angular/core';
 
 interface PropertyMetadata {
   property: string;
-  type: Type<any>;
+  type: () => Type<any>;
   name: string;
   transformers: string[];
 }

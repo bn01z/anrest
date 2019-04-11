@@ -21,17 +21,18 @@ function getTransformers(type: Type<any>) {
   }
 }
 
-export function Property(type?: Type<any>): PropertyDecorator {
+export function Property(type?: () => Type<any>): PropertyDecorator {
 
   return (target: Object, propertyKey: string) => {
     if (!type) {
-      type = Reflect.getMetadata('design:type', target, propertyKey);
+      const defaultType = Reflect.getMetadata('design:type', target, propertyKey);
+      type = () => defaultType;
       }
     Meta.getForType(<Type<any>>target.constructor).properties.push({
       property: propertyKey,
       type: type,
       name: propertyKey,
-      transformers: getTransformers(type)
+      transformers: getTransformers(type())
     });
   };
 }

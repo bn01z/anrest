@@ -153,6 +153,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "showCircularDependencies": false,
             "outputPath": "dist/anrest-example",
             "index": "projects/anrest-example/src/index.html",
             "main": "projects/anrest-example/src/main.ts",

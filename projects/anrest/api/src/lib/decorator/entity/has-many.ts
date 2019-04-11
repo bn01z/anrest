@@ -1,17 +1,17 @@
 import { Type } from '@angular/core';
 import { Meta } from '../../meta/meta';
-import { HttpModule } from "../../http/http.module";
+import { HttpModule } from '../../http/http.module';
 
-export function HasMany(type: Type<any>, path?: string): MethodDecorator {
+export function HasMany(type: () => Type<any>, path?: string): MethodDecorator {
 
   return (target: Object, propertyKey: string, descriptor: TypedPropertyDescriptor<any>) => {
     const itemMeta = Meta.getForType(<Type<any>>target.constructor);
 
     descriptor.value = function () {
       return HttpModule.client.getList(
-        type,
+        type(),
         undefined,
-        itemMeta.path + '/' + this[itemMeta.id] + (path || Meta.getForType(type).path)
+        itemMeta.path + '/' + this[itemMeta.id] + (path || Meta.getForType(type()).path)
       );
     };
   };

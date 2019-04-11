@@ -2,7 +2,7 @@ import { Inject, Injectable, Optional, Type } from '@angular/core';
 
 import { ANREST_DATA_TRANSFORMERS, ComplexDataTransformer, DataTransformer } from './transformer';
 import { Meta } from '../meta/meta';
-import { AnRestHttpClient } from "../http/client";
+import { AnRestHttpClient } from '../http/client';
 
 @Injectable()
 export class TransformerService {

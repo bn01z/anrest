@@ -2,11 +2,12 @@ import { Type } from '@angular/core';
 
 import { Meta } from '../../meta/meta';
 
-export function Reference(type?: Type<any>): PropertyDecorator {
+export function Reference(type: () => Type<any>): PropertyDecorator {
 
   return (target: Object, propertyKey: string) => {
     if (!type) {
-      type = Reflect.getMetadata('design:type', target, propertyKey);
+      const defaultType = Reflect.getMetadata('design:type', target, propertyKey);
+      type = () => defaultType;
     }
     Meta.getForType(<Type<any>>target.constructor).properties.push({
       property: propertyKey,

@@ -52,7 +52,7 @@ export class AnRestHttpClient extends HttpClient {
 
     return (<AfterGetItemEvent> this.eventsService.broadcast(
       new AfterGetItemEvent(this, entityType, new NormalizedResponse(data)))
-    ).data
+    ).data;
   }
 
   refreshItem(entity: any): Observable<any> {

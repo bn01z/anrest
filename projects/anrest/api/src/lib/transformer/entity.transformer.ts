@@ -30,7 +30,7 @@ export class EntityTransformer extends ObjectTransformer {
     meta.properties.forEach((propertyInfo) => {
       let propertyData = data[propertyInfo.name];
       for (const transformerType of propertyInfo.transformers) {
-        propertyData = this.findTransformer(transformerType).transform(propertyData, propertyInfo.type);
+        propertyData = this.findTransformer(transformerType).transform(propertyData, propertyInfo.type());
       }
       object[propertyInfo.property] = propertyData;
     });
