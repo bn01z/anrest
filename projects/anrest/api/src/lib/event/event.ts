@@ -88,7 +88,7 @@ export class AfterGetItemEvent extends AfterEvent {
 }
 
 export class BeforeSaveEvent extends BeforeEvent {
-  public isNew: boolean;
+  public isManaged: boolean;
 
   constructor(http: AnRestHttpClient, entityType: Type<any>, public data: any) {
     super(http, entityType);

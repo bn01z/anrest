@@ -11,6 +11,7 @@ import { ResponseProcessor } from './event-handlers/response-processor';
 import { ResponseNormalizer } from './event-handlers/response-normalizer';
 import { AnRestHttpClient } from './client';
 import { TransformerModule } from '../transformer/transformer.module';
+import { IsManagedChecker } from './event-handlers/is-managed-checker';
 
 @NgModule({
   imports: [
@@ -22,6 +23,11 @@ import { TransformerModule } from '../transformer/transformer.module';
       provide: AnRestHttpHandler,
       useFactory: anrestHandlerFactory,
       deps: [HttpBackend, [ new Optional(), ANREST_HTTP_INTERCEPTORS ], [ new Optional(), HTTP_INTERCEPTORS ]],
+    },
+    {
+      provide: ANREST_HTTP_EVENT_HANDLERS,
+      useClass: IsManagedChecker,
+      multi: true
     },
     {
       provide: ANREST_HTTP_EVENT_HANDLERS,

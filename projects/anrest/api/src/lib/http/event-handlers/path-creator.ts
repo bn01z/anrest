@@ -24,7 +24,7 @@ export class PathCreator implements EventHandler {
       let path = this.getBasePath(event.entityType());
       if (event instanceof BeforeGetItemEvent) {
         path += '/' + event.id;
-      } else if (event instanceof BeforeRemoveEvent || (event instanceof BeforeSaveEvent && !event.isNew)) {
+      } else if (event instanceof BeforeRemoveEvent || (event instanceof BeforeSaveEvent && event.isManaged)) {
         path += '/' + event.data[this.getIdField(event.entityType())];
       }
       event.path = path;

@@ -5,7 +5,7 @@ import { AnRestConfig, ApiConfig } from './api.config';
 import { NormalizerModule } from './normalizer/normalizer.module';
 import { HttpModule } from './http/http.module';
 import { EventModule } from './event/event.module';
-import {ObjectCollector} from "./object-collector";
+import {ObjectCollector} from './object-collector';
 
 const defaultConfig = { uri: '/api' };
 

@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 import { Meta } from '../../meta/meta';
 
-export function Header(headerName: string, append?: boolean): PropertyDecorator|MethodDecorator {
+export function Header(headerName: string, append?: boolean) {
 
   return (target: Object, propertyKey: string, descriptor?: TypedPropertyDescriptor<any>) => {
     Meta.getForType(<Type<any>>target.constructor).headers.push({

@@ -66,7 +66,7 @@ export class AnRestHttpClient extends HttpClient {
 
   saveItem(entity: any): Observable<any> {
     const event = <BeforeSaveEvent> this.eventsService.broadcast(new BeforeSaveEvent(this, entity.constructor, entity));
-    return this[event.isNew ? 'put' : 'post'](event.path, event.data, { headers: event.headers }).pipe(
+    return this[event.isManaged ? 'put' : 'post'](event.path, event.data, { headers: event.headers }).pipe(
       map((response: HttpResponse<any>) =>
         (<AfterSaveEvent> this.eventsService.broadcast(new AfterSaveEvent(this, entity.constructor, response))).data)
     );

@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 import { Meta } from '../../meta/meta';
 
-export function Body(): PropertyDecorator|MethodDecorator {
+export function Body() {
 
   return (target: Object, propertyKey: string, descriptor?: TypedPropertyDescriptor<any>) => {
     Meta.getForType(<Type<any>>target.constructor).body =
