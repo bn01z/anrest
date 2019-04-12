@@ -13,7 +13,7 @@ export function Reference(type: () => Type<any>): PropertyDecorator {
       property: propertyKey,
       type: type,
       name: propertyKey,
-      transformers: ['reference-formatter', 'entity']
+      transformers: () => ['reference-formatter', 'entity']
     });
   };
 }

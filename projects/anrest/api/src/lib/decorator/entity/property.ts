@@ -32,7 +32,7 @@ export function Property(type?: () => Type<any>): PropertyDecorator {
       property: propertyKey,
       type: type,
       name: propertyKey,
-      transformers: getTransformers(type())
+      transformers: () => getTransformers(type())
     });
   };
 }

@@ -28,7 +28,7 @@ export class TransformerService {
   }
 
   public transform(data: any, type: Type<any>): any {
-    for (const transformerType of Meta.getForType(type).transformers) {
+    for (const transformerType of Meta.getForType(type).transformers()) {
       data = this.findTransformer(transformerType).transform(data, type);
     }
     return data;

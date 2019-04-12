@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.http.getList(User, this.query).subscribe(console.log);
     this.http.getReference(User, 1).posts().subscribe(console.log);
     this.http.getItem(Post, 2).subscribe(console.log);
+    this.http.getItem(User, 1).subscribe(console.log);
   }
 }

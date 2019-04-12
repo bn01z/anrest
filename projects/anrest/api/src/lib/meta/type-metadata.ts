@@ -4,7 +4,7 @@ interface PropertyMetadata {
   property: string;
   type: () => Type<any>;
   name: string;
-  transformers: string[];
+  transformers: () => string[];
 }
 
 interface HeadersMetadata {
@@ -20,7 +20,7 @@ export class TypeMetadata {
   body: (object: any) => string;
   properties: PropertyMetadata[] = [];
   headers: HeadersMetadata[] = [];
-  transformers: string[];
+  transformers: () => string[];
 
   constructor() {
     this.id = 'id';
