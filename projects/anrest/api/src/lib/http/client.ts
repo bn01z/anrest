@@ -16,8 +16,8 @@ import {
   BeforeSaveEvent
 } from '../event/event';
 import { EventsService } from '../event/service';
-import {Meta} from "../meta/meta";
-import { NormalizedResponse } from "../normalizer/normalized-response";
+import {Meta} from '../meta/meta';
+import { NormalizedResponse } from '../normalizer/normalized-response';
 
 @Injectable()
 export class AnRestHttpClient extends HttpClient {

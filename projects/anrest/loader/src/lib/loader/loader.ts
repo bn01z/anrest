@@ -67,17 +67,21 @@ export class Loader {
 
   protected onLoad(data: Collection<any>) {}
 
+  /**
+   * @todo Make function recursive for more complex objects
+   */
   private createQueryParams(data: any[]): { [index: string]: any } {
     const result = {};
     for (const name in this.filters) {
       const value = data.shift();
       if (typeof value === 'object') {
-        const apiMeta = ApiMeta.getForType(value.constructor);
+        const apiMeta = ApiMeta.getForType(value.constructor, true);
         if (apiMeta) {
           result[name] = value[apiMeta.id];
         } else {
           for (const key in value) {
-            result[name + '[' + key + ']'] = value[key];
+            const subMeta = typeof value[key] === 'object' ? ApiMeta.getForType(value[key].constructor) : undefined;
+            result[name + '[' + key + ']'] = subMeta ? value[key][subMeta.id] : value[key];
           }
         }
       } else {

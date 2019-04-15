@@ -3,6 +3,7 @@ import { HttpParams } from '@angular/common/http';
 import { BeforeGetListEvent } from '../../event/event';
 import { EventHandler } from '../../event/handler';
 import { BeforeGetList } from '../../decorator/event-handler';
+import { Meta } from '../../meta/meta';
 
 @BeforeGetList()
 export class FilterProcessor implements EventHandler {
@@ -19,9 +20,14 @@ export class FilterProcessor implements EventHandler {
         params = this.processFilters(params, value, prefix);
       }
     } else if (typeof filter === 'object') {
-      for (const key in filter) {
-        const newPrefix = prefix ? (prefix + '[' + key + ']') : key;
-        params = this.processFilters(params, filter[key], newPrefix);
+      const apiMeta = Meta.getForType(filter.constructor, true);
+      if (apiMeta) {
+        params = params.append(prefix, String(filter[apiMeta.id]));
+      } else {
+        for (const key in filter) {
+          const newPrefix = prefix ? (prefix + '[' + key + ']') : key;
+          params = this.processFilters(params, filter[key], newPrefix);
+        }
       }
     } else {
       if (filter || filter === false) {
