@@ -70,6 +70,6 @@ export class InfiniteScrollLoader extends Loader {
   protected getList(
     [loadMore, loadAll, filter]: [Observable<Collection<any>>, Observable<Collection<any>>, any]
   ): Observable<Collection<any>> {
-    return loadAll || loadMore || this.http.getList(this.entityType, filter);
+    return loadAll || loadMore || super.getList(filter);
   }
 }

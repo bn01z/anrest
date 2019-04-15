@@ -75,6 +75,6 @@ export class PaginationLoader extends Loader {
   }
 
   protected getList([page, filter]: [Observable<Collection<any>>, any]): Observable<Collection<any>> {
-    return page || this.http.getList(this.entityType, filter);
+    return page || super.getList(filter);
   }
 }
