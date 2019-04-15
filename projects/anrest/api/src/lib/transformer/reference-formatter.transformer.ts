@@ -15,7 +15,7 @@ export class ReferenceFormatterTransformer implements DataTransformer {
     const result = {};
     const meta = Meta.getForType(type);
     const id = [meta.path, data].join('/');
-    if (id) {
+    if (id && this.collector.has(id)) {
       const object = this.collector.get(id);
       for (const key of Object.getOwnPropertyNames(object)) {
         result[key] = object[key];
