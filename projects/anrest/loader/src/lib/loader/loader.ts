@@ -2,7 +2,7 @@ import { Type } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, mergeMap, share, shareReplay, tap } from 'rxjs/operators';
 
-import { AnRestHttpClient, Collection } from '@anrest/api';
+import { AnRestHttpClient, Collection, Meta as ApiMeta } from '@anrest/api';
 import { ApiLoaderConfig } from '../loader.config';
 import { Meta } from '../meta/meta';
 
@@ -72,8 +72,13 @@ export class Loader {
     for (const name in this.filters) {
       const value = data.shift();
       if (typeof value === 'object') {
-        for (const key in value) {
-          result[name + '[' + key + ']'] = value[key];
+        const apiMeta = ApiMeta.getForType(value.constructor);
+        if (apiMeta) {
+          result[name] = value[apiMeta.id];
+        } else {
+          for (const key in value) {
+            result[name + '[' + key + ']'] = value[key];
+          }
         }
       } else {
         result[name] = value;
