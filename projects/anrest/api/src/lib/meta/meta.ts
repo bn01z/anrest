@@ -12,10 +12,10 @@ export class Meta {
 
   private constructor() { }
 
-  static getForType(type: Type<any>): TypeMetadata {
+  static getForType(type: Type<any>, disableCreation = false): TypeMetadata {
     return type.hasOwnProperty(Meta.typeMetaKey) ?
       (type as any)[Meta.typeMetaKey] :
-      Object.defineProperty(type, Meta.typeMetaKey, { value: Meta.createTypeMeta(type) })[Meta.typeMetaKey];
+      (disableCreation ? undefined : Object.defineProperty(type, Meta.typeMetaKey, { value: Meta.createTypeMeta(type) })[Meta.typeMetaKey]);
   }
 
   static getForObject(type: Object): ObjectMetadata {

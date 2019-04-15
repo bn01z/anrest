@@ -14,3 +14,4 @@ export { ANREST_HTTP_INTERCEPTORS } from './lib/http/handler';
 export { EventHandler, BaseEventHandler, ANREST_HTTP_EVENT_HANDLERS } from './lib/event/handler';
 export { Collection } from './lib/collection/collection';
 export { ANREST_DATA_TRANSFORMERS, DataTransformer, ComplexDataTransformer } from './lib/transformer/transformer';
+export { Meta } from './lib/meta/meta';
